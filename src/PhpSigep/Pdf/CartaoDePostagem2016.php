@@ -226,7 +226,8 @@ class CartaoDePostagem2016
                 $tPosChancela = 1;
 
                 $servicoDePostagem = $objetoPostal->getServicoDePostagem();
-                $nomeRemetente = $this->plp->getRemetente()->getNome();
+//                $nomeRemetente = $this->plp->getRemetente()->getNome();
+                $nomeRemetente = 'EGOBOX';
                 $accessData = $this->plp->getAccessData();
 
                 switch ($servicoDePostagem->getCodigo()) {
