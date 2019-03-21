@@ -21,6 +21,10 @@ class Config extends DefaultStdClass
      * Indica que estamos no ambiente de desenvolvimento.
      */
     const ENV_DEVELOPMENT = 2;
+    
+    const XML_ENCODE_ISO = "iso-8859-1";
+    
+    const XML_ENCODE_UTF = "utf-8";
 
     const WSDL_ATENDE_CLIENTE_PRODUCTION = 'https://apps.correios.com.br/SigepMasterJPA/AtendeClienteService/AtendeCliente?wsdl';
 
@@ -29,6 +33,8 @@ class Config extends DefaultStdClass
     const WSDL_CAL_PRECO_PRAZO = 'http://ws.correios.com.br/calculador/CalcPrecoPrazo.asmx?WSDL';
 
     const WSDL_RASTREAR_OBJETOS = 'https://webservice.correios.com.br/service/rastro/Rastro.wsdl';
+
+    const WSDL_AGENCIAS_WS = 'https://cws.correios.com.br/cws/agenciaService/agenciaWS';
 
     /**
      * Endereço para o WSDL AtendeCliente.
@@ -48,10 +54,21 @@ class Config extends DefaultStdClass
     protected $wsdlRastrearObjetos = self::WSDL_RASTREAR_OBJETOS;
 
     /**
+     * @var string
+     */
+    protected $wsdlAgenciaWS = self::WSDL_AGENCIAS_WS;
+
+    /**
      * @var int
      */
     protected $env = self::ENV_DEVELOPMENT;
 
+     /**
+     * @var string
+     */
+    protected $xml_encode = self::XML_ENCODE_UTF;
+
+    
     /**
      * @var bool
      */
@@ -143,6 +160,28 @@ class Config extends DefaultStdClass
     }
 
     /**
+     * @param int $env
+     * @return $this
+     */
+    public function setXmlEncode($xml_encode)
+    {
+        if ($xml_encode == self::XML_ENCODE_ISO) {
+            $this->xml_encode = self::XML_ENCODE_ISO;
+        } else {
+            $this->xml_encode = self::XML_ENCODE_UTF;
+        }
+        return $this;
+    }    
+
+    /**
+     * @return string
+     */
+    public function getXmlEncode()
+    {
+        return $this->xml_encode;
+    }    
+    
+    /**
      * @return string
      */
     public function getWsdlAtendeCliente()
@@ -197,6 +236,26 @@ class Config extends DefaultStdClass
     public function getWsdlRastrearObjetos()
     {
         return $this->wsdlRastrearObjetos;
+    }
+
+    /**
+     * @param string $wsdlAgenciaWS
+     * 
+     * @return $this;
+     */
+    public function setWsdlAgenciaWS($wsdlAgenciaWS)
+    {
+        $this->wsdlAgenciaWS = $wsdlAgenciaWS;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getWsdlAgenciaWS()
+    {
+        return $this->wsdlAgenciaWS;
     }
 
     /**

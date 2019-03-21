@@ -3,8 +3,8 @@
 PHP SIGEP - Correios
 ====================
 
-* Baixe a última versão estável aqui: [https://github.com/stavarengo/php-sigep/tags](https://github.com/stavarengo/php-sigep/tags) 
- 
+* Baixe a última versão estável aqui: [https://github.com/stavarengo/php-sigep/tags](https://github.com/stavarengo/php-sigep/tags)
+
 Implementação do Web Service dos correios SIGEP Web.
 ### [Veja a demo online, exemplos e documentação em nossa página](http://stavarengo.github.io/php-sigep).
 
@@ -18,8 +18,11 @@ Esta API pode:
 * Criar e/ou verificar validade do dígito verificador das etiquetas (através do web service ou não).   
 * Gerar o relatório da PLP no formato PDF.   
 * Gerar as etiquetas de postagem no formato PDF.
-* Gerar em PDF as chancelas para cada tipo de serviço (logo de cada tipo de servico). 
+* Gerar em PDF as chancelas para cada tipo de serviço (logo de cada tipo de servico).
 * Obter dados de PLP após postagem [processamento pelo Sara]
+* [Novo] Suspender a entrega de postagem (Também chamado de Entrega Interativa)
+* [Novo] Listagem de Agências (Necessário para o Clique e Retire)
+* [Novo] Gerar as etiquetas de postagem no formato PDF para o Clique e Retire.
 
 Requisitos
 ---
@@ -53,6 +56,9 @@ Instalação manual
 
 # Problemas Comum
 
+## Autorização de acesso negada para o sistema
+Antes de utilizar este projeto em modo produção, é necessário solicitar ao representante comercial dos correios habilitação e senha para o webservice dos correios.
+
 ## Problemas com o PHP 5.3
 Este problema foi reportado aqui: https://github.com/stavarengo/php-sigep/issues/35
 Alguns usuarios tiveram problemas de conexão e autentificação com WebService do Correios em ambiente de produção devido a versão do PHP.
@@ -68,7 +74,6 @@ $config->setWsdlAtendeCliente('CAMINHO-DO-SEU-ARQUIVO-LOCAL');
 \PhpSigep\Bootstrap::start($config);
 ```
 OBS: Não irá funcionar em um servidor local, como Wamp, Xammp entre outros.
-
 
 Funções
 ---
